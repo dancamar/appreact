@@ -1,24 +1,20 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+
+
+//imprtar formularios
+//import Links from './components/Links';
+import LinksForm from './components/LinksForm';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Hola a todos
-        </a>
-      </header>
-    </div>
+   
+<div className="container p-4">
+  <div className="row">
+    <LinksForm/>
+  </div>
+</div>
   );
 }
 

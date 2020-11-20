@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { db } from '../firebase';
 
-const LinksForm = () => {
+const LinksForm = (props) => {
 
     const initialStateValues = {
         url: '',
@@ -17,8 +18,22 @@ const LinksForm = () => {
 
     const handleSubmit =(e)=>{
         e.preventDefault();
-        console.log(values);
+        props.addOrEditLink(values);
+        setValues({...initialStateValues});        
     }
+
+    const getLinkById=async(id)=>{
+        const doc=await db.collection('links').doc(id).get();
+        setValues({...doc.data()});
+    }
+
+    useEffect(()=>{
+        if(props.currentId===''){
+            setValues({...initialStateValues});
+        }else{
+            getLinkById(props.currentId);
+        }
+    }, [props.currentId]);
 
     return (
         
@@ -49,7 +64,7 @@ const LinksForm = () => {
                 </div>
 
                 <button className="btn btn-primary btn-block" >
-                    Enviar
+                    {props.currentId===''? 'Guardar':"Actualizar"}
                 </button>
             </form>
     )

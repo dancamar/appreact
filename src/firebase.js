@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
-var firebaseConfig = {
+  var firebaseConfig = {
     apiKey: "AIzaSyBW1FHPtBZxUd9kKChQatV_sYjB65-0oUQ",
     authDomain: "apppruebar.firebaseapp.com",
     databaseURL: "https://apppruebar.firebaseio.com",
@@ -13,4 +13,6 @@ var firebaseConfig = {
   // Initialize Firebase
   const fb = firebase.initializeApp(firebaseConfig);
 
-  export const fb =fb.firestore();
+  export const db =fb.firestore();
+
+ 
